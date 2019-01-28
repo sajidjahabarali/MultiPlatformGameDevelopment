@@ -6,14 +6,29 @@ public class PlayerController : MonoBehaviour {
     //speed is a public variable
     public float speed;
     private int count;
+    public float xPos;
+    public float yPos;
+    public float zPos;
+    public float velocity;
     private int numPickups = 3;
     public Text scoreText;
     public Text winText;
+    public Text posText;
+    public Text velText;
+    //public Vector3 previousPos;
 
     void Start(){
         count = 0;
+        xPos = 0;
+        yPos = 0;
+        zPos = 0;
+        
         winText.text = "";
         SetCountText();
+        setPosText();
+        //setVelText();
+
+
 
     }
 
@@ -29,6 +44,7 @@ public class PlayerController : MonoBehaviour {
         Time.deltaTime contains the time since the last update call and assures a smooth movement.
         ***/
         GetComponent<Rigidbody>().AddForce(movement * speed * Time.deltaTime);
+        setPosText();
 
     }
 
@@ -52,5 +68,17 @@ public class PlayerController : MonoBehaviour {
             winText.text = "You Win!";
         }
 
+    }
+
+    private void setPosText(){
+
+        posText.text = "X: " + transform.position.x.ToString() + " Z: " + transform.position.z.ToString();
+
+    }
+
+    private void setVelText(){
+
+        //velText.text = "Velocity: " + ((transform.position-previousPos)/Time.deltaTime);
+        //velText.text = "Velocity: " + GetComponent<Rigidbody>().velocity.toString();
     }
 }
