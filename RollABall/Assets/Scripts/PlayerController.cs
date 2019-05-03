@@ -71,14 +71,14 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void setPosText(){
-
-        posText.text = "X: " + transform.position.x.ToString() + " Z: " + transform.position.z.ToString();
+        //posText.text = "X: " + transform.position.x + " Z: " + transform.position.z;
+        posText.text = "Position: " + transform.position;
 
     }
 
     private void setVelText(){
 
         //velText.text = "Velocity: " + ((transform.position-previousPos)/Time.deltaTime);
-        //velText.text = "Velocity: " + GetComponent<Rigidbody>().velocity.toString();
+        velText.text = "Velocity: " + GetComponent<Rigidbody>().velocity.toString();
     }
 }
